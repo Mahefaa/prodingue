@@ -171,7 +171,7 @@ jobs:
                   --arg commit_sha "${{ github.sha }}" \
                   --arg commit_message "$commit_message" \
                   --arg commit_author "$commit_author" \
-                  --arg status "WORKFLOW_RUNNING" \
+                  --arg status "WORKFLOW_FAILED" \
                   --arg environment_type "$(echo "${{ github.ref_name }}" | tr '[:lower:]' '[:upper:]')" \
                   '{
                     app_env_deployment_id: ($app_env_deployment_id | if . == "null" then null else . end),
@@ -181,3 +181,4 @@ jobs:
                     status: $status,
                   environment_type: $environment_type
                 }')")
+          echo $response
