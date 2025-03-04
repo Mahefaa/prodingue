@@ -10,14 +10,19 @@ plugins {
 
     id 'jacoco'
 
-    
+    id "org.sonarqube" version "4.4.1.3373" 
 }
 
 jacoco {
     toolVersion = "0.8.11"
 }
 
-
+sonarqube {
+    properties {
+        property "sonar.java.source", "21"
+        property "sonar.java.target", "21"
+    }
+} 
 
 repositories {
 
@@ -145,5 +150,9 @@ dependencies {
     testImplementation 'org.junit-pioneer:junit-pioneer:2.2.0'
 
 
-
+    implementation 'io.sentry:sentry-logback:7.6.0'
+    implementation 'io.sentry:sentry-spring-boot-starter-jakarta:7.4.0'
+    
+    
+implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
 }
